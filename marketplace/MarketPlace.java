@@ -1,6 +1,7 @@
 package marketplace;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Scanner;
 
 public class MarketPlace {
     int currentProductId;
@@ -15,13 +16,11 @@ public class MarketPlace {
     }
 
     public void menu() {
-
-        boolean f = false;
+        boolean exitFlag = false;
         while(true) {
             showMenu();
+
             int number = scanner.nextInt();
-
-
             switch(number) {
                 case 1:
                     addUser();
@@ -32,20 +31,22 @@ public class MarketPlace {
                 case 3:
                     showUsers();
                     break;
+                case 4:
+                    showProducts();
+                    break;
                 case 9:
-                    f = true;
+                    exitFlag = true;
                     break;
                 default:
                     System.out.println("Incorrect number! Please try again");
                     break;
 
             }
-            if(f) {
+            if(exitFlag) {
                 break;
             }
 
         }
-
         scanner.close();
     }
 
@@ -62,6 +63,7 @@ public class MarketPlace {
         String name = scanner.next();
         System.out.println("Please enter price : ");
         int price = scanner.nextInt();
+        products.add(new Product(name, price));
     }
 
     public void addUser() {
@@ -75,7 +77,12 @@ public class MarketPlace {
         users.add(new User(firstName, lastName, amountOfMoney));
     }
 
-
+    public void showProducts() {
+        System.out.println("\nProducts");
+        for(Product product : products) {
+            product.showProductInfo();
+        }
+    }
 
     public void showUsers() {
         System.out.println("\nUsers");

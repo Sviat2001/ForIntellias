@@ -1,6 +1,6 @@
 package marketplace;
 
-import java.util.*;
+import java.util.ArrayList;
 
 public class Product {
     static int currentId = 0;

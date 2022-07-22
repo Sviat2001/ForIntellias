@@ -1,6 +1,5 @@
 package marketplace;
 
-
 import java.util.ArrayList;
 
 public class User {
@@ -23,6 +22,18 @@ public class User {
     }
 
     public boolean buyProduct(Product product) {
+        try{
+            if(amountOfMoney - product.getPrice() >= 0) {
+                amountOfMoney -= product.getPrice();
+                product.buyingThisProduct(id);
+                System.out.println("Successful buying product " + product.getName() + " by user " + firstName);
+            } else {
+                throw new NotEnoughFunds();
+            }
+        }catch(Exception exception) {
+            System.out.println("Exception: " + exception.toString());
+            return false;
+        }
         return true;
     }
 
