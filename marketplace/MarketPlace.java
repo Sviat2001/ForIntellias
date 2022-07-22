@@ -12,9 +12,7 @@ public class MarketPlace {
     static public void main(String[] args) {
         MarketPlace test = new MarketPlace();
         test.menu();
-
     }
-
 
     public void menu() {
 
@@ -59,16 +57,14 @@ public class MarketPlace {
         System.out.println("4. Display list of all products");
     }
 
-
     public void addProduct() {
         System.out.println("Please enter name : ");
         String name = scanner.next();
         System.out.println("Please enter price : ");
         int price = scanner.nextInt();
-
     }
-    public void addUser() {
 
+    public void addUser() {
         System.out.println("Please enter first name : ");
         String firstName = scanner.next();
         System.out.println("Please enter last name : ");
