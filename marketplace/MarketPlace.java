@@ -96,7 +96,7 @@ public class MarketPlace {
         String lastName = scanner.next();
         System.out.println("Please enter amount of money : ");
         int amountOfMoney = scanner.nextInt();
-        if(firstName != null && lastName != null) {
+        if(firstName != null || lastName != null) {
             users.add(new User(firstName, lastName, amountOfMoney));
         } else {
             System.out.println("Error. Null String");
