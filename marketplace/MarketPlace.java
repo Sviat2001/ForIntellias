@@ -82,8 +82,11 @@ public class MarketPlace {
         String name = scanner.next();
         System.out.println("Please enter price : ");
         int price = scanner.nextInt();
-        if(name != null)
-        products.add(new Product(name, price));
+        if(name != null) {
+            products.add(new Product(name, price));
+        } else {
+            System.out.println("Error. Null String");
+        }
     }
 
     public void addUser() {

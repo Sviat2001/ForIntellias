@@ -32,7 +32,7 @@ public class User {
     }
 
     public boolean buyProduct(Product product) {
-        try{
+        try {
             if(amountOfMoney - product.getPrice() >= 0) {
                 productIdThatBought.add(product.getId());
                 amountOfMoney -= product.getPrice();
@@ -40,7 +40,7 @@ public class User {
             } else {
                 throw new NotEnoughFunds();
             }
-        }catch(Exception exception) {
+        } catch(Exception exception) {
             System.out.println("Exception: " + exception.toString());
             return false;
         }
