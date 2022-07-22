@@ -21,7 +21,17 @@ public class Product {
 
     public void deleteUser(int id) {
         while(userIdThatBought.indexOf(id) != -1) {
-            userIdThatBought.remove(id);
+            userIdThatBought.remove(userIdThatBought.indexOf(id));
+        }
+    }
+
+    public void showAllUsers() {
+        if(userIdThatBought.size() > 0)  {
+            for(int userId : userIdThatBought) {
+                System.out.println("Product " + name + " was bought by user with id " + userId);
+            }
+        } else {
+            System.out.println("There are no user that was bought it");
         }
     }
 

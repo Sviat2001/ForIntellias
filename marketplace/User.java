@@ -8,12 +8,22 @@ public class User {
     String firstName;
     String lastName;
     int amountOfMoney;
-    ArrayList<Integer> userIdThatBought;
+    ArrayList<Integer> productIdThatBought = new ArrayList<Integer>();
     User(String firstName, String lastName, int amountOfMoney) {
         this.id = currentId++;
         this.firstName = firstName;
         this.lastName = lastName;
         this.amountOfMoney = amountOfMoney;
+    }
+
+    public void showAllProducts() {
+        if(productIdThatBought.size() > 0) {
+            for(int productId : productIdThatBought) {
+                System.out.println("User " + firstName + " bought product with id " + productId);
+            }
+        } else {
+            System.out.println("There are no products bought by this user");
+        }
     }
 
     public void showUserInfo() {
@@ -24,8 +34,8 @@ public class User {
     public boolean buyProduct(Product product) {
         try{
             if(amountOfMoney - product.getPrice() >= 0) {
+                productIdThatBought.add(product.getId());
                 amountOfMoney -= product.getPrice();
-                product.buyingThisProduct(id);
                 System.out.println("Successful buying product " + product.getName() + " by user " + firstName);
             } else {
                 throw new NotEnoughFunds();
@@ -35,6 +45,12 @@ public class User {
             return false;
         }
         return true;
+    }
+
+    public void deleteProduct(int id) {
+        while(productIdThatBought.indexOf(id) != -1) {
+            productIdThatBought.remove(productIdThatBought.indexOf(id));
+        }
     }
 
     public int getId() {
